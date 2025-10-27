@@ -53,17 +53,20 @@
   table {
     width: 100%;
     border-collapse: collapse;
+    background-color: var(--bg-color);
+    color: var(--text-color);
   }
   th, td {
     padding: 0.5rem;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     text-align: left;
+    color: var(--text-color);
   }
   th.sortable {
     cursor: pointer;
-    background-color: #f4f4f4;
+    background-color: #111111;
   }
   th.sortable:hover {
-    background-color: #e0e0e0;
+    background-color: #222222;
   }
 </style>

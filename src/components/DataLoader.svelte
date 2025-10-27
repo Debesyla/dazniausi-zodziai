@@ -62,19 +62,19 @@
   .loading {
     padding: 1rem;
     text-align: center;
-    color: #666;
+    color: var(--text-color);
   }
 
   .error {
     padding: 1rem;
-    background-color: #fee;
-    border: 1px solid #c00;
+    background-color: #200000;
+    border: 1px solid #800000;
     border-radius: 4px;
   }
 
   .error h3 {
     margin: 0 0 0.5rem 0;
-    color: #c00;
+    color: #FFBF00;
   }
 
   .dataset {
@@ -83,9 +83,11 @@
 
   .dataset h2 {
     margin: 0 0 1rem 0;
+    color: var(--text-color);
   }
 
   .dataset h3 {
     margin: 1.5rem 0 0.5rem 0;
+    color: var(--text-color);
   }
 </style>

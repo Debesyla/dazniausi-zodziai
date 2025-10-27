@@ -1,0 +1,11 @@
+:root {
+  --bg-color: #000000;
+  --text-color: #FFBF00;
+  --border-color: #333333;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Courier New', monospace;
+}
