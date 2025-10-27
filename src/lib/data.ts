@@ -2,13 +2,13 @@
  * Data loading utility for JSON datasets
  */
 
-interface Word {
+export interface Word {
   word: string;
   type?: string;
   frequency: number;
 }
 
-interface Dataset {
+export interface Dataset {
   author: string;
   year: number;
   words: Word[];

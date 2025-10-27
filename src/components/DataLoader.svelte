@@ -1,8 +1,11 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { loadDataset } from '$lib/data';
+  import { filterWords } from '$lib/utils';
+  import SearchBar from './SearchBar.svelte';
+  import DataTable from './DataTable.svelte';
 
-  export let filename = 'sample-dataset.json';
+  let { filename = 'sample-dataset.json' } = $props();
 
   interface Word {
     word: string;
@@ -16,9 +19,12 @@
     words: Word[];
   }
 
-  let dataset: Dataset | null = null;
-  let loading = true;
-  let error: string | null = null;
+  let dataset = $state<Dataset | null>(null);
+  let loading = $state(true);
+  let error = $state<string | null>(null);
+  let searchQuery = $state('');
+
+  let filteredWords = $derived(dataset?.words ? filterWords(dataset.words, searchQuery) : []);
 
   onMount(async () => {
     try {
@@ -46,18 +52,9 @@
     <p><strong>Author:</strong> {dataset.author}</p>
     <p><strong>Year:</strong> {dataset.year}</p>
     
-    <h3>Words ({dataset.words.length})</h3>
-    <ul class="word-list">
-      {#each dataset.words as word}
-        <li>
-          <span class="word">{word.word}</span>
-          {#if word.type}
-            <span class="type">({word.type})</span>
-          {/if}
-          <span class="frequency">- {word.frequency.toLocaleString()}</span>
-        </li>
-      {/each}
-    </ul>
+    <h3>Words ({filteredWords.length})</h3>
+    <SearchBar bind:value={searchQuery} />
+    <DataTable words={filteredWords} />
   </div>
 {/if}
 
@@ -90,30 +87,5 @@
 
   .dataset h3 {
     margin: 1.5rem 0 0.5rem 0;
-  }
-
-  .word-list {
-    list-style: none;
-    padding: 0;
-  }
-
-  .word-list li {
-    padding: 0.5rem;
-    border-bottom: 1px solid #eee;
-  }
-
-  .word {
-    font-weight: bold;
-  }
-
-  .type {
-    color: #666;
-    font-size: 0.9em;
-    margin-left: 0.5rem;
-  }
-
-  .frequency {
-    color: #888;
-    margin-left: 0.5rem;
   }
 </style>
