@@ -69,4 +69,15 @@
   th.sortable:hover {
     background-color: #222222;
   }
+
+  @media (max-width: 767px) {
+    table {
+      overflow-x: auto;
+      display: block;
+      white-space: nowrap;
+    }
+    th, td {
+      padding: 0.25rem;
+    }
+  }
 </style>

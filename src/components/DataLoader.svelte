@@ -4,6 +4,7 @@
   import { filterWords } from '$lib/utils';
   import SearchBar from './SearchBar.svelte';
   import DataTable from './DataTable.svelte';
+  import DownloadButton from './DownloadButton.svelte';
 
   let { filename = 'sample-dataset.json' } = $props();
 
@@ -54,6 +55,7 @@
     
     <h3>Words ({filteredWords.length})</h3>
     <SearchBar bind:value={searchQuery} />
+    <DownloadButton words={filteredWords} metadata={{author: dataset.author, year: dataset.year}} />
     <DataTable words={filteredWords} />
   </div>
 {/if}

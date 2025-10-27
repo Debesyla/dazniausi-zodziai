@@ -31,4 +31,17 @@
   button:hover {
     background-color: #111;
   }
+
+  @media (max-width: 767px) {
+    .search-bar {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    input {
+      width: 100%;
+    }
+    button {
+      align-self: flex-end;
+    }
+  }
 </style>
